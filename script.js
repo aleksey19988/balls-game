@@ -6,6 +6,7 @@ const timeEl = document.querySelector('#timer');
 const board = document.querySelector('#board');
 
 let time = null;
+let timer = null;
 let scores = 0;
 
 startGameBtn.addEventListener('click', (event) => {
@@ -28,13 +29,14 @@ timelist.addEventListener('click', event => {
 
 function startGame() {
     setTime(time);
-    setInterval(decreaseTime, 1000);
+    timer = setInterval(decreaseTime, 1000);
     createRandomCircle();
 }
 
 function decreaseTime() {
     if (time === 0) {
         finishGame();
+        clearInterval(timer);
     } else {
         let current = --time;
         if (current < 10) {
@@ -49,7 +51,7 @@ function setTime(value) {
 }
 
 function finishGame() {
-    timeEl.parentNode.remove();
+    // timeEl.parentNode.remove();
     board.innerHTML = `<h1>Твой счёт: <span class="primary">${scores}</span> &#128588;</h1>`
     const playAgainBtn = document.createElement('btn');
     playAgainBtn.innerHTML = 'Играть снова';
@@ -100,6 +102,10 @@ board.addEventListener('click', (event) => {
 
 board.addEventListener('click', (event) => {
     if (event.target.classList.contains('play-again-btn')) {
-        location.reload();
+        screens[2].classList.remove('up');
+        screens[1].classList.remove('up');
+        screens[0].classList.remove('up');
+        scores = 0;
+        board.innerHTML = '';
     }
 });

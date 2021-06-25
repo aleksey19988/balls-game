@@ -47,6 +47,22 @@ h1 {
   margin-top: -100vh;
 }
 
+.rules {
+  font-size: 30px;
+}
+
+.agreed-rules {
+  min-width: 200px;
+  min-height: 50px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: none;
+}
+
+.agreed-rules:hover {
+  cursor: pointer;
+}
+
 .time-list {
   display: flex;
   flex-wrap: wrap;

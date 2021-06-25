@@ -1,5 +1,6 @@
 const startGameBtn = document.querySelector('#start');
 const screens = document.querySelectorAll('.screen');
+const agreedRulesBtn = document.querySelector('#agreed-rules');
 const timelist = document.querySelector('.time-list');
 const timeEl = document.querySelector('#timer');
 const board = document.querySelector('#board');
@@ -12,10 +13,14 @@ startGameBtn.addEventListener('click', (event) => {
     screens[0].classList.add('up');
 });
 
+agreedRulesBtn.addEventListener('click', () => {
+    screens[1].classList.add('up');
+});
+
 timelist.addEventListener('click', event => {
     if (event.target.classList.contains('time-btn')) {
         time = parseInt(event.target.getAttribute('data-time'));
-        screens[1].classList.add('up');
+        screens[2].classList.add('up');
         startGame();
     }
 });
@@ -50,7 +55,6 @@ function finishGame() {
     playAgainBtn.innerHTML = 'Играть снова';
     playAgainBtn.classList.add('play-again-btn');
     board.append(playAgainBtn);
-    
 }
 
 function createRandomCircle() {
